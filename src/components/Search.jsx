@@ -70,13 +70,12 @@ function Search() {
 
     const base_url = resource.url + '/' + identifier;
     let data = await getApiResource(base_url);
-    setData(data);
-    if (resource.key === 'people' && data.type === 'success') {
+    
+    if (resource.key === 'people' && data.type === 'success' ) {
       const homeworld = await getApiResource(data.payload.homeworld);
       data.payload.home = homeworld.payload;
-      setData(data)
     }
-
+    setData(data);
   }
   return (
 
@@ -110,9 +109,7 @@ function Search() {
             {Object.keys(data.payload).map((key, index) => (
               index <= 7 && <li key={key} className="list-group-item">{key} : {data.payload[key]}</li>
             ))}
-
           </ul>
-
           {
             data.payload.home &&
             <div>
@@ -121,11 +118,9 @@ function Search() {
                 {Object.keys(data.payload.home).map((key, index) => (
                   index <= 7 && <li key={key} className="list-group-item">{key} : {data.payload.home[key]}</li>
                 ))}
-
               </ul>
             </div>
           }
-
         </div>
       }
 

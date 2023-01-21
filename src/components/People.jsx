@@ -29,7 +29,6 @@ function People() {
 
     const base_url = 'https://swapi.dev/api/people/' + id;
     let data = await getApiResource(base_url);
-    setData(data);
     if(data.type === 'success'){
       const homeworld = await getApiResource(data.payload.homeworld);
       data.payload.home = homeworld.payload;
